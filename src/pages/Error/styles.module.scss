@@ -1,0 +1,23 @@
+.error_message {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.title {
+  font-weight: $font-bold;
+  font-size: $size-medium;
+  color: $error;
+}
+
+.error {
+  font-weight: $font-bold;
+  font-size: $size-large;
+  color: $error;
+}
+
+.button {
+  font-size: $size-regular;
+}
