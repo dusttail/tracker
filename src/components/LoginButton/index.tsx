@@ -5,7 +5,7 @@ type Props = {
   className?: any;
 };
 
-export default function ConfirmButton(props: Props) {
+export default function LoginButton(props: Props) {
   const { label, className } = props;
   return (
     <Button
@@ -18,6 +18,7 @@ export default function ConfirmButton(props: Props) {
       }}
       disableElevation
       className={className}
+      color="secondary"
     >
       {label}
     </Button>

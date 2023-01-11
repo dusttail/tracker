@@ -1,4 +1,6 @@
+import LoginButton from "@/components/LoginButton";
 import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
 import style from "./styles.module.scss";
 
 export default function Login() {
@@ -12,6 +14,11 @@ export default function Login() {
       className={style.screen}
     >
       <div className={style.title}>Щопонеділка</div>
+      <div className={style.buttons}>
+        <Link to={"/"}>
+          <LoginButton label="Демо логін" />
+        </Link>
+      </div>
     </Box>
   );
 }

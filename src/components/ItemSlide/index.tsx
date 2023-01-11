@@ -155,7 +155,7 @@ export default function ItemSlide(props: Props) {
             sx={{ width: "60px", height: "60px" }}
           />
           <div className={styles.card_content}>
-            <Typography variant="body1" noWrap>
+            <Typography variant="body1" noWrap width="250px">
               {title}
             </Typography>
           </div>
