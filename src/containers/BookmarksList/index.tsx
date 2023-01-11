@@ -16,18 +16,18 @@ type Props = {
 function BookmarksList(props: Props) {
   const { data } = props;
   const dispatch = useDispatch();
-  const [slideAction, setSlideAction] = useState({
-    type: null,
-    id: null,
-  });
+  const [slideAction, setSlideAction] = useState({ type: null, id: null });
+  const [list, setList] = useState(data ?? []);
 
   useEffect(() => {
     if (slideAction.id && slideAction.type === SLIDE_ACTION.LEFT) {
       dispatch(deleteBookmark(slideAction.id));
+      setList(list.filter((item) => item.id !== slideAction.id));
       setSlideAction({ type: null, id: null });
     }
     if (slideAction.id && slideAction.type === SLIDE_ACTION.RIGHT) {
       dispatch(archiveBookmark(slideAction.id));
+      setList(list.filter((item) => item.id !== slideAction.id));
       setSlideAction({ type: null, id: null });
     }
   }, [slideAction]);
@@ -35,18 +35,17 @@ function BookmarksList(props: Props) {
   return (
     <List>
       <TransitionGroup>
-        {data &&
-          data.map((item: any) => (
-            <Collapse key={item.id}>
-              <ItemSlide
-                id={item.id}
-                key={item.index}
-                image={item.image}
-                title={item.title}
-                submitSlideAction={setSlideAction}
-              />
-            </Collapse>
-          ))}
+        {list.map((item: any) => (
+          <Collapse key={item.id}>
+            <ItemSlide
+              id={item.id}
+              key={item.index}
+              image={item.image}
+              title={item.title}
+              submitSlideAction={setSlideAction}
+            />
+          </Collapse>
+        ))}
       </TransitionGroup>
     </List>
   );

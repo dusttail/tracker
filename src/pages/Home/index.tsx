@@ -1,8 +1,9 @@
+import BlurScreen from "@/components/BlurScreen";
 import BookmarksList from "@/containers/BookmarksList";
 import Header from "@/containers/Header";
 import LinearSpinner from "@/containers/LinearSpinner";
 import { setHeaderTitle } from "@/redux/modules/app/reducers";
-import { Box, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import { useDispatch } from "react-redux";
 
 export default function Home() {
@@ -13,10 +14,9 @@ export default function Home() {
     <>
       <Header />
       <LinearSpinner />
+      <BlurScreen blur={false} />
       <Box>
-        {/* <Stack alignItems="center" spacing={0} sx={{ margin: "20px auto" }}> */}
-          <BookmarksList />
-        {/* </Stack> */}
+        <BookmarksList />
       </Box>
     </>
   );

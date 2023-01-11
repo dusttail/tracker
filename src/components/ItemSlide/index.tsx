@@ -6,12 +6,6 @@ import { Card, CardMedia, Typography } from "@mui/material";
 import { useState } from "react";
 import styles from "./styles.module.scss";
 
-const COMPONENT_STATE = {
-  INITIALIZED: "INITIALIZED",
-  MOUNTED: "MOUNTED",
-  DISPOSAL: "DISPOSAL",
-};
-
 export const SLIDE_ACTION = {
   LEFT: "LEFT",
   RIGHT: "RIGHT",
@@ -34,15 +28,6 @@ export default function ItemSlide(props: Props) {
   const [mousePosition, setMousePosition] = useState(vector2());
   const [isDragging, setIsDragging] = useState(false);
   const [slideDisposal, setSlideDisposal] = useState("");
-
-  // useEffect(() => {
-  //   if (state === COMPONENT_STATE.INITIALIZED) {
-  //     setState(COMPONENT_STATE.MOUNTED);
-  //   }
-  //   return () => {
-  //     setState(COMPONENT_STATE.DISPOSAL);
-  //   };
-  // });
 
   function handlePress(e: any) {
     setIsDragging(true);
