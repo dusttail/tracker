@@ -32,7 +32,7 @@ export default function ItemSlide(props: Props) {
 
   const [startPosition, setStartPosition] = useState(vector2());
   const [mousePosition, setMousePosition] = useState(vector2());
-  const [state, setState] = useState(COMPONENT_STATE.INITIALIZED);
+  const [isDragging, setIsDragging] = useState(false);
   const [slideDisposal, setSlideDisposal] = useState("");
 
   // useEffect(() => {
@@ -45,15 +45,17 @@ export default function ItemSlide(props: Props) {
   // });
 
   function handlePress(e: any) {
+    setIsDragging(true);
     setStartPosition(vector2(e));
     setMousePosition(vector2(e));
   }
 
   function handleDrag(e: any) {
-    setMousePosition(vector2(e));
+    if (isDragging) setMousePosition(vector2(e));
   }
 
   function handleRelease() {
+    setIsDragging(false);
     const action = getAction();
     if (action) {
       setSlideDisposal(action);
@@ -65,6 +67,7 @@ export default function ItemSlide(props: Props) {
   }
 
   function handleCancel() {
+    setIsDragging(false);
     setStartPosition(vector2());
     setMousePosition(vector2());
   }
@@ -86,13 +89,14 @@ export default function ItemSlide(props: Props) {
     <div
       className={styles.container}
       onMouseDown={handlePress}
-      onMouseMove={handleDrag}
       onMouseUp={handleRelease}
+      onMouseMove={handleDrag}
       onMouseLeave={handleCancel}
       onTouchStart={handlePress}
       onTouchMove={handleDrag}
       onTouchEnd={handleRelease}
       onTouchCancel={handleCancel}
+      style={{ userSelect: "none" }}
     >
       <div
         className={styles.archive}

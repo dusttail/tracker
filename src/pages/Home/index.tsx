@@ -14,9 +14,9 @@ export default function Home() {
       <Header />
       <LinearSpinner />
       <Box>
-        <Stack alignItems="center" spacing={0} sx={{ margin: "20px auto" }}>
+        {/* <Stack alignItems="center" spacing={0} sx={{ margin: "20px auto" }}> */}
           <BookmarksList />
-        </Stack>
+        {/* </Stack> */}
       </Box>
     </>
   );

@@ -51,11 +51,11 @@
 }
 
 .card_dispose_left {
-  animation: 0.5s slide-left;
+  animation: 2s slide-left;
 }
 
 .card_dispose_right {
-  animation: 0.5s slide-right;
+  animation: 2s slide-right;
 }
 
 @keyframes slide-right {
@@ -64,7 +64,7 @@
     opacity: 1;
   }
   to {
-    margin-right: -100vw;
+    margin-right: -1000vw;
     opacity: 0;
   }
 }
@@ -75,7 +75,7 @@
     opacity: 1;
   }
   to {
-    margin-right: 100vw;
+    margin-right: 1000vw;
     opacity: 0;
   }
 }
