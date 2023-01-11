@@ -1,0 +1,19 @@
+.add_button_container {
+  position: fixed;
+  z-index: 900;
+  right: 6vw;
+  bottom: 40px;
+}
+
+.icon {
+  display: flex;
+  transition: all 0.3s ease-out;
+}
+
+.open {
+  transform: rotate(45deg);
+}
+
+.close {
+  transform: rotate(0);
+}

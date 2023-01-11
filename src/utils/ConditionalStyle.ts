@@ -1,3 +1,3 @@
-export function conditionalStyle(predicate: boolean, style: string) {
-    return predicate ? style : '';
+export function conditionalStyle(predicate: boolean, style: string, otherStyle?: string) {
+    return predicate ? style : otherStyle ?? '';
 }
