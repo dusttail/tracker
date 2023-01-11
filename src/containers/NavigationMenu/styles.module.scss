@@ -1,0 +1,9 @@
+.menu_container {
+  border: $secondary 2px solid;
+  position: fixed;
+  width: 260px;
+  z-index: 600;
+  bottom: 65px;
+  right: 45px;
+  padding: 10px;
+}
