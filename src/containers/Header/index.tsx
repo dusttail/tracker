@@ -1,10 +1,14 @@
+import { getHeaderTitle } from "@/redux/modules/app/selectors";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import { Box, IconButton, Toolbar, Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
+import { connect } from "react-redux";
 
-export default function Header() {
+function Header(props: any) {
+  const { headerTitle } = props;
+
   // TODO: Use trigger to inherit info card image
   const trigger = useScrollTrigger();
 
@@ -15,9 +19,8 @@ export default function Header() {
           <IconButton edge="start" color="inherit" aria-label="menu">
             <PersonOutlinedIcon sx={{ fontSize: 30 }} />
           </IconButton>
-          <Box sx={{ flexGrow: 1 }} />
-          <Typography variant="h6" noWrap>
-            Title
+          <Typography variant="h6" noWrap marginLeft={"8px"}>
+            {headerTitle}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <IconButton edge="end" color="inherit" aria-label="menu">
@@ -29,3 +32,5 @@ export default function Header() {
     </Box>
   );
 }
+
+export default connect(getHeaderTitle)(Header);

@@ -1,7 +1,8 @@
-import { IDLE, LOADING } from './actions';
+import { IDLE, LOADING, SET_HEADER_TITLE } from './actions';
 
 const initialState = {
-  state: IDLE
+  state: IDLE,
+  headerTitle: ''
 };
 
 export default function app(state = initialState, action: any) {
@@ -10,7 +11,11 @@ export default function app(state = initialState, action: any) {
       return { ...state, state: IDLE };
     case LOADING:
       return { ...state, state: LOADING };
+    case SET_HEADER_TITLE:
+      return { ...state, headerTitle: action.payload.headerTitle };
     default:
       return state;
   }
 }
+
+export const setHeaderTitle = (value: string) => ({ type: SET_HEADER_TITLE, payload: { headerTitle: value } });

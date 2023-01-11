@@ -1,9 +1,14 @@
 import ConfirmButton from "@/components/ConfirmButton";
-import Header from "@/components/Header";
+import Header from "@/containers/Header";
+import { setHeaderTitle } from "@/redux/modules/app/reducers";
 import { Grid, Paper } from "@mui/material";
+import { useDispatch } from "react-redux";
 import style from "./styles.module.scss";
 
 export default function ErrorPage() {
+  const dispatch = useDispatch();
+  dispatch(setHeaderTitle(""));
+
   return (
     <>
       <Header />
@@ -25,12 +30,9 @@ export default function ErrorPage() {
             elevation={3}
             className={style.error_message}
           >
-            <span className={style.title}>Опаньки!</span>
+            <span className={style.title}>Сталась помилка!</span>
             <span className={style.error}>404</span>
-            <ConfirmButton
-              label="Повернутись додому"
-              className={style.button}
-            />
+            <ConfirmButton label="Добре" className={style.button} />
           </Paper>
         </Grid>
       </Grid>
