@@ -1,9 +1,9 @@
 import { Button } from "@mui/material";
 
-interface Props {
+type Props = {
   label: string;
   className: any;
-}
+};
 
 export default function ConfirmButton(props: Props) {
   const { label, className } = props;

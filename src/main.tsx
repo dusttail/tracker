@@ -7,7 +7,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
-import configureStore from "./redux/configureStore";
+import store from "./redux/store";
 import { router } from "./router";
 import { theme } from "./theme";
 
@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <CssBaseline />
     <ThemeProvider theme={theme}>
-      <Provider store={configureStore()}>
+      <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
     </ThemeProvider>

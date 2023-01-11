@@ -1,0 +1,81 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 70px;
+  overflow: hidden;
+}
+
+.card {
+  position: absolute;
+  width: 340px;
+  height: 60px;
+  z-index: 10;
+}
+
+.archive {
+  position: absolute;
+  background-color: $success;
+  height: 60px;
+  width: 100%;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: $font-medium;
+  color: $white;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+.remove {
+  position: absolute;
+  background-color: $error;
+  height: 60px;
+  width: 100%;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-weight: $font-medium;
+  color: $white;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+.card_content {
+  display: flex;
+  align-items: center;
+  margin: 8px;
+}
+
+.card_dispose_left {
+  animation: 0.5s slide-left;
+}
+
+.card_dispose_right {
+  animation: 0.5s slide-right;
+}
+
+@keyframes slide-right {
+  from {
+    margin-right: 0vw;
+    opacity: 1;
+  }
+  to {
+    margin-right: -100vw;
+    opacity: 0;
+  }
+}
+
+@keyframes slide-left {
+  from {
+    margin-right: 0vw;
+    opacity: 1;
+  }
+  to {
+    margin-right: 100vw;
+    opacity: 0;
+  }
+}

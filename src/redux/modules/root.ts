@@ -1,11 +1,16 @@
 import { combineReducers } from 'redux';
 import { combineEpics } from 'redux-observable';
-import { ping, pingEpic } from './ping';
+import appEpics from './app/epics';
+import app from './app/reducers';
+import bookmarksEpics from './bookmarks/epics';
+import bookmarks from './bookmarks/reducers';
 
 export const rootEpic = combineEpics(
-    pingEpic
+    appEpics,
+    bookmarksEpics
 );
 
 export const rootReducer = combineReducers({
-    ping
+    app,
+    bookmarks
 });

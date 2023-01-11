@@ -4,11 +4,7 @@ import { Box, IconButton, Toolbar, Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 
-interface Props {
-  children: React.ReactElement;
-}
-
-export default function Header(props: any) {
+export default function Header() {
   // TODO: Use trigger to inherit info card image
   const trigger = useScrollTrigger();
 
