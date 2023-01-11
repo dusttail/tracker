@@ -1,4 +1,5 @@
-import { Card, Fade } from "@mui/material";
+import NavigationMenuButton from "@/components/NavigationMenuButton";
+import { Fade, List, Paper } from "@mui/material";
 import styles from "./styles.module.scss";
 
 type Props = {
@@ -10,14 +11,14 @@ export default function NavigationMenu(props: Props) {
 
   return (
     <Fade in={isOpen}>
-      <Card className={styles.menu_container}>
-        Enim proident ipsum eiusmod ea pariatur exercitation veniam commodo
-        cupidatat in incididunt occaecat. Dolore laborum nisi ad laboris
-        incididunt exercitation reprehenderit adipisicing minim. Voluptate elit
-        consectetur ullamco occaecat cupidatat excepteur sunt nostrud eiusmod.
-        Aliqua excepteur Lorem exercitation esse mollit dolore exercitation
-        reprehenderit. Laborum incididunt laboris nulla duis cupidatat.
-      </Card>
+      <Paper className={styles.menu_container}>
+        <List>
+          <NavigationMenuButton label={"📚 Книги"} link={"/search?books"} />
+          <NavigationMenuButton label={"🎞️ Фільми"} link={"/search?movies"} />
+          <NavigationMenuButton label={"🍥 Аніме"} link={"/search?anime"} />
+          <NavigationMenuButton label={"🎴 Манга"} link={"/search?manga"} />
+        </List>
+      </Paper>
     </Fade>
   );
 }

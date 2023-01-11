@@ -12,7 +12,7 @@ export default function Home() {
   const dispatch = useDispatch();
   dispatch(setHeaderTitle(""));
 
-  const [isMenuOpen, setMenuOpen] = useState(true);
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   function handleOpen() {
     setMenuOpen(!isMenuOpen);

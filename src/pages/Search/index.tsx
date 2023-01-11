@@ -1,14 +1,17 @@
-import { Box, Container } from "@mui/material";
+import Header from "@/containers/Header";
+import LinearSpinner from "@/containers/LinearSpinner";
 import { setHeaderTitle } from "@/redux/modules/app/reducers";
 import { useDispatch } from "react-redux";
 
 export default function Search() {
   const dispatch = useDispatch();
-  dispatch(setHeaderTitle("Search"));
+  dispatch(setHeaderTitle("Категорія: undefined"));
 
   return (
-    <Container>
-      <Box>Search</Box>
-    </Container>
+    <>
+      <Header />
+      <LinearSpinner />
+      Search Placeholder
+    </>
   );
 }

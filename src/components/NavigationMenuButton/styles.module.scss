@@ -1,0 +1,23 @@
+.button {
+  border-radius: 8px;
+  background-color: $neutral;
+  padding: 10px;
+  font-weight: $font-bold;
+  margin: 10px auto;
+  height: 40px;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: $secondary;
+}
+
+.button:active {
+  transition: none;
+  background: #d7aa52;
+}
+
+.link {
+  text-decoration: none;
+  color: $black;
+}
