@@ -1,13 +1,24 @@
 import { createBrowserRouter } from "react-router-dom";
+import Header from "./containers/Header";
+import LinearSpinner from "./containers/LinearSpinner";
 import ErrorPage from "./pages/Error";
 import Home from "./pages/Home";
 import Info from "./pages/Info";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Search from "./pages/Search";
-import Settings from "./pages/Settings";
 
 const errorElement = <ErrorPage />;
+
+function PageWrapper(props: any) {
+  return (
+    <>
+      <Header />
+      <LinearSpinner />
+      {props.children}
+    </>
+  );
+}
 
 export const router = createBrowserRouter([
   {
@@ -17,29 +28,38 @@ export const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <PageWrapper>
+        <Home />
+      </PageWrapper>
+    ),
     errorElement,
   },
   {
     path: "/profile",
-    element: <Profile />,
+    element: (
+      <PageWrapper>
+        <Profile />
+      </PageWrapper>
+    ),
     errorElement,
-    children: [
-      {
-        path: "/profile/settings",
-        element: <Settings />,
-        errorElement,
-      },
-    ],
   },
   {
     path: "/search",
-    element: <Search />,
+    element: (
+      <PageWrapper>
+        <Search />
+      </PageWrapper>
+    ),
     errorElement,
   },
   {
     path: "/info",
-    element: <Info />,
+    element: (
+      <PageWrapper>
+        <Info />
+      </PageWrapper>
+    ),
     errorElement,
   },
 ]);
