@@ -1,13 +1,17 @@
 import { getHeaderTitle } from "@/redux/modules/app/selectors";
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import SearchIcon from "@mui/icons-material/Search";
 import { Box, IconButton, Toolbar, Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { connect } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 function Header(props: any) {
   const { headerTitle } = props;
+
+  // TODO: Use location to set header title
+  const location = useLocation();
 
   // TODO: Use trigger to inherit info card image
   const trigger = useScrollTrigger();
@@ -24,7 +28,7 @@ function Header(props: any) {
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <IconButton edge="end" color="inherit" aria-label="menu">
-            <NotificationsOutlinedIcon sx={{ fontSize: 30 }} />
+            <SearchIcon sx={{ fontSize: 30 }} />
           </IconButton>
         </Toolbar>
       </AppBar>

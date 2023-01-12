@@ -10,7 +10,7 @@ import Search from "./pages/Search";
 
 const errorElement = <ErrorPage />;
 
-function PageWrapper(props: any) {
+function PageWrapper(props: React.PropsWithChildren) {
   return (
     <>
       <Header />
