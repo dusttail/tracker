@@ -1,10 +1,11 @@
+import Loader from "@/containers/Loader";
 import {
   archiveBookmark,
   deleteBookmark,
 } from "@/redux/modules/bookmarks/reducers";
 import { getBookmarksList } from "@/redux/modules/bookmarks/selectors";
 import { Collapse, List } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import { TransitionGroup } from "react-transition-group";
 import ItemSlide, { SLIDE_ACTION } from "../../components/ItemSlide";
@@ -19,6 +20,12 @@ function BookmarksList(props: Props) {
   const [slideAction, setSlideAction] = useState({ type: null, id: null });
   const [list, setList] = useState(data ?? []);
 
+  const [query, setQuery] = useState();
+  const [pageNumber, setPageNumber] = useState();
+  const [hasMore, setHasMore] = useState(true);
+
+  const observer = useRef<IntersectionObserver>();
+
   useEffect(() => {
     if (slideAction.id && slideAction.type === SLIDE_ACTION.LEFT) {
       dispatch(deleteBookmark(slideAction.id));
@@ -31,6 +38,10 @@ function BookmarksList(props: Props) {
       setSlideAction({ type: null, id: null });
     }
   }, [slideAction]);
+
+  useEffect(() => {
+    // dispatch call
+  }, [query, pageNumber]);
 
   return (
     <List>
@@ -47,6 +58,11 @@ function BookmarksList(props: Props) {
           </Collapse>
         ))}
       </TransitionGroup>
+      <Loader
+        observer={observer}
+        while={hasMore}
+        callback={() => console.log("loading")}
+      />
     </List>
   );
 }
