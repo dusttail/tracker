@@ -20,10 +20,7 @@ function BookmarksList(props: Props) {
   const { data } = props;
   const dispatch = useDispatch();
   const [slideAction, setSlideAction] = useState({ type: null, id: null });
-  const [list, setList] = useState<Bookmark[]>(data ?? []);
-
-  const [next, setNext] = useState<string>();
-  const [hasMore, setHasMore] = useState(true);
+  const [list, setList] = useState<Bookmark[]>([]);
 
   const observer = useRef<IntersectionObserver>();
 
@@ -41,27 +38,20 @@ function BookmarksList(props: Props) {
   }, [slideAction]);
 
   useEffect(() => {
-    dispatch(loadBookmarks(next));
-  }, [next]);
-
-  useEffect(() => {
-    console.log("log data", data);
-  });
+    setList(data);
+  }, [data]);
 
   const handleLoad = () => {
-    console.log(data);
-    console.log(list);
-    console.log(data.length);
-    if (data.length) {
-      console.log("loading");
-      setNext(data[data.length - 1].id);
-    }
+    if (list.length) dispatch(loadBookmarks(list[list.length - 1].id));
+    else dispatch(loadBookmarks());
   };
+
+  console.log(data.length);
 
   return (
     <List>
       <TransitionGroup>
-        {data.map((item: any) => (
+        {list.map((item: any) => (
           <Collapse key={item.id}>
             <ItemSlide
               id={item.id}
@@ -73,7 +63,7 @@ function BookmarksList(props: Props) {
           </Collapse>
         ))}
       </TransitionGroup>
-      <Loader observer={observer} while={next} callback={handleLoad} />
+      <Loader observer={observer} callback={handleLoad} />
     </List>
   );
 }

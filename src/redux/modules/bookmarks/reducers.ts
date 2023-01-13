@@ -6,7 +6,7 @@ const initialState = {
   data: []
 };
 
-export default function bookmarks(state: { data: Bookmark[]; } = initialState, action: any) {
+export default function bookmarks(state: { data: Bookmark[]; } = initialState, action: any): { data: Bookmark[]; } {
   switch (action.type) {
     case LOAD_BOOKMARKS_SUCCESS:
       return { ...state, data: state.data.concat(getMockBookmarkList(10)) };;

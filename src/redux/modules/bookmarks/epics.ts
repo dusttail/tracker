@@ -1,10 +1,11 @@
 import { combineEpics, ofType } from 'redux-observable';
-import { delay, map, Observable } from 'rxjs';
+import { delay, map, Observable, throttleTime } from 'rxjs';
 import { ADD_BOOKMARK, ADD_BOOKMARK_SUCCESS, ARCHIVE_BOOKMARK, ARCHIVE_BOOKMARK_SUCCESS, DELETE_BOOKMARK, DELETE_BOOKMARK_SUCCESS, LOAD_BOOKMARKS, LOAD_BOOKMARKS_SUCCESS } from './actions';
 
 const loadBookmarksEpic = (action$: Observable<any>) => action$.pipe(
     ofType(LOAD_BOOKMARKS),
-    delay(1000),
+    delay(500),
+    throttleTime(500),
     map((action) => ({ ...action, type: LOAD_BOOKMARKS_SUCCESS, loading: false }))
 );
 
