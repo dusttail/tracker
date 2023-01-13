@@ -8,7 +8,13 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 
-const errorElement = <ErrorPage />;
+const errorElement = (
+  <>
+    <Header />
+    <LinearSpinner />
+    <ErrorPage />
+  </>
+);
 
 function PageWrapper(props: React.PropsWithChildren) {
   return (

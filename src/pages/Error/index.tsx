@@ -1,17 +1,10 @@
 import ConfirmButton from "@/components/ConfirmButton";
-import Header from "@/containers/Header";
-import { setHeaderTitle } from "@/redux/modules/app/reducers";
 import { Grid, Paper } from "@mui/material";
-import { useDispatch } from "react-redux";
 import style from "./styles.module.scss";
 
 export default function ErrorPage() {
-  const dispatch = useDispatch();
-  dispatch(setHeaderTitle(""));
-
   return (
     <>
-      <Header />
       <Grid
         container
         justifyContent="center"
