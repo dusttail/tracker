@@ -1,7 +1,9 @@
 import Loader from "@/containers/Loader";
+import { Bookmark } from "@/redux/modules/bookmarks/mock/types";
 import {
   archiveBookmark,
   deleteBookmark,
+  loadBookmarks,
 } from "@/redux/modules/bookmarks/reducers";
 import { getBookmarksList } from "@/redux/modules/bookmarks/selectors";
 import { Collapse, List } from "@mui/material";
@@ -11,17 +13,16 @@ import { TransitionGroup } from "react-transition-group";
 import ItemSlide, { SLIDE_ACTION } from "../../components/ItemSlide";
 
 type Props = {
-  data?: any[];
+  data: Bookmark[];
 };
 
 function BookmarksList(props: Props) {
   const { data } = props;
   const dispatch = useDispatch();
   const [slideAction, setSlideAction] = useState({ type: null, id: null });
-  const [list, setList] = useState(data ?? []);
+  const [list, setList] = useState<Bookmark[]>(data ?? []);
 
-  const [query, setQuery] = useState();
-  const [pageNumber, setPageNumber] = useState();
+  const [next, setNext] = useState<string>();
   const [hasMore, setHasMore] = useState(true);
 
   const observer = useRef<IntersectionObserver>();
@@ -40,13 +41,27 @@ function BookmarksList(props: Props) {
   }, [slideAction]);
 
   useEffect(() => {
-    // dispatch call
-  }, [query, pageNumber]);
+    dispatch(loadBookmarks(next));
+  }, [next]);
+
+  useEffect(() => {
+    console.log("log data", data);
+  });
+
+  const handleLoad = () => {
+    console.log(data);
+    console.log(list);
+    console.log(data.length);
+    if (data.length) {
+      console.log("loading");
+      setNext(data[data.length - 1].id);
+    }
+  };
 
   return (
     <List>
       <TransitionGroup>
-        {list.map((item: any) => (
+        {data.map((item: any) => (
           <Collapse key={item.id}>
             <ItemSlide
               id={item.id}
@@ -58,11 +73,7 @@ function BookmarksList(props: Props) {
           </Collapse>
         ))}
       </TransitionGroup>
-      <Loader
-        observer={observer}
-        while={hasMore}
-        callback={() => console.log("loading")}
-      />
+      <Loader observer={observer} while={next} callback={handleLoad} />
     </List>
   );
 }

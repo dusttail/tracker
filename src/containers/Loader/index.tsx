@@ -3,11 +3,11 @@ import { getAppState } from "@/redux/modules/app/selectors";
 import { CircularProgress, Collapse } from "@mui/material";
 import { useCallback } from "react";
 import { connect } from "react-redux";
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 type Props = {
   observer: React.MutableRefObject<IntersectionObserver | undefined>;
-  while: boolean;
+  while: unknown;
   callback?(...args: any): void;
   state?: string;
 };

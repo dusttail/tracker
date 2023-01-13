@@ -1,12 +1,14 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Header from "./containers/Header";
 import LinearSpinner from "./containers/LinearSpinner";
-import ErrorPage from "./pages/Error";
-import Home from "./pages/Home";
-import Info from "./pages/Info";
-import Login from "./pages/Login";
-import Profile from "./pages/Profile";
-import Search from "./pages/Search";
+
+const ErrorPage = lazy(() => import("./pages/Error"));
+const Home = lazy(() => import("./pages/Home"));
+const Info = lazy(() => import("./pages/Info"));
+const Login = lazy(() => import("./pages/Login"));
+const Profile = lazy(() => import("./pages/Profile"));
+const Search = lazy(() => import("./pages/Search"));
 
 const errorElement = (
   <>
@@ -21,7 +23,7 @@ function PageWrapper(props: React.PropsWithChildren) {
     <>
       <Header />
       <LinearSpinner />
-      {props.children}
+      <Suspense fallback={<></>}>{props.children}</Suspense>
     </>
   );
 }
